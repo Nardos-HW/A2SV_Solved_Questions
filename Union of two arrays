@@ -1,0 +1,13 @@
+class Solution:    
+    def findUnion(self, a, b):
+        # code here
+        a = list(set(a))
+        b = list(set(b))
+        
+        for i in a:
+            if i in b:
+                continue
+            else:
+                b.append(i)
+        
+        return b
