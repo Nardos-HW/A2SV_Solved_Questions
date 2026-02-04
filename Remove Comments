@@ -1,0 +1,68 @@
+class Solution(object):
+    def removeComments(self, source):
+        """
+        :type source: List[str]
+        :rtype: List[str]
+        """
+        opened = False
+        temp = ""
+        final_list = []
+        residue = True
+        double = False
+
+        for i in source:
+
+            n = len(i)
+
+            for j in range (n-1):
+
+                if double:
+                    double = False
+                    continue
+
+                if len(i) >= 2 and i[j:j+2] == "//" and not opened:
+
+                    residue = False
+
+                    break
+
+                elif len(i) >= 2 and i[j:j+2] == "/*" and not opened:
+                    
+                    opened = True
+                    double = True
+                    continue
+
+                elif len(i) >= 2 and i[j:j+2] == "*/" and opened:
+
+                    opened = False
+                    
+                    if j == n-2:
+                        residue = False
+                    else:
+                        double = True
+                    
+
+                elif not opened:
+
+                    temp += i[j]
+
+            if opened:
+
+                continue
+
+            else:
+
+                if residue:
+
+                    temp += i[n-1]
+
+            if len(temp) != 0:
+
+                final_list.append(temp)
+            residue = True
+            temp = ""
+
+        return final_list
+
+
+
