@@ -7,17 +7,22 @@ class Solution(object):
         """
         n = len(names)
 
-        for i in range(n):
+        for i in range(1,n):
 
-            for j in range(n-1-i):
+            currenth = heights[i]
+            currentn = names[i]
+        
+            for j in range(i-1,-1,-1):
 
-                if heights[j] < heights[j+1]:
-
+                if currenth > heights[j]:
                     heights[j], heights[j+1] = heights[j+1], heights[j]
                     names[j], names[j+1] = names[j+1], names[j]
 
-                
+                else:
 
+                    break
+
+                    
         return names
 
                     
