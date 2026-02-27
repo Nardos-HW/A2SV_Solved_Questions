@@ -1,0 +1,35 @@
+class Solution(object):
+    def findCommonResponse(self, responses):
+        """
+        :type responses: List[List[str]]
+        :rtype: str
+        """
+        dic = {}
+
+        maxi = 0
+
+        for i in range(len(responses)):
+
+            x = list(set(responses[i]))
+
+            
+
+            for j in x:
+
+                dic[j] = dic.get(j,0) + 1
+                maxi = max(maxi, dic[j])
+
+        lst = []
+
+        for i in dic:
+
+            if dic[i] == maxi:
+                lst.append(i)
+        
+
+        lst.sort()
+
+        return lst[0]
+
+
+        
