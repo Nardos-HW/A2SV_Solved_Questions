@@ -1,0 +1,26 @@
+t = int(input())
+
+
+
+for _ in range(t):
+
+    n = int(input())
+    s = input()
+    output = None
+    
+    if "aa" in s:
+        output = 2
+    
+    elif "aba" in s or "aca" in s:
+        output = 3
+
+    elif "abca" in s or "acba" in s:
+        output = 4
+
+    elif "abbacca" in s or "accabba" in s:
+        output = 7
+
+    else:
+        output = -1
+
+    print(output)
