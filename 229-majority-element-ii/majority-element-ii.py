@@ -1,29 +1,14 @@
-class Solution(object):
-    def majorityElement(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[int]
-        """
-
-        tracker = {}
-        output = []
+class Solution:
+    def majorityElement(self, nums: List[int]) -> List[int]:
+        res = []
         n = len(nums)
-        freq = n // 3
-
-        for i in nums:
-
-            if i in tracker:
-                tracker[i] += 1
-
-            else:
- 
-                tracker[i] = 1
-
-        for i in tracker:
-
-            if tracker[i] > freq:
-
-                output.append(i)
-
-        return output
+        cnt = {}
         
+        for x in nums:
+            cnt[x] = cnt.get(x, 0) + 1
+        
+        for key in cnt:
+            if cnt[key] > n // 3:
+                res.append(key)
+        
+        return res
